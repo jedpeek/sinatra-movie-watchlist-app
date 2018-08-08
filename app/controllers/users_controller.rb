@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
     post '/signup' do
         @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-        binding.pry
         session[:user_id] = @user.id
         redirect to '/movies'
     end
