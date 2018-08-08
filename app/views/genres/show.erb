@@ -1,0 +1,11 @@
+<h1>Genre:<a href="/genres/<%=@genre.slug%>"> <%= @genre.name %> </a></h1>
+
+<h3>Movie Catalog:</h3>
+ <% @genre.movies.each do |song| %>
+    <a href="/movies/<%=movie.slug%>"><%= movie.name %></a>
+  <%end%>
+
+<h3>Users Catalog: </h3>
+  <% @genre.users.each do |user|%>
+    <a href="/users/<%=user.slug%>"> <%= user.name %> </a>
+  <%end%>
