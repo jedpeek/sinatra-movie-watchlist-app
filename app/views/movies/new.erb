@@ -1,0 +1,18 @@
+<h1>Add a Movie to Catalog</h1>
+
+<form action="/movies" method="POST">
+  <label for="User Name"> User Name </label>
+  <input type="text" name="User Name"> </br>
+
+  <label for="Name"> Movie Name </label>
+  <input type="text" name="Name"> </br>
+
+  <label> Genres </label>
+  <br>
+  <% Genre.all.each do |genre| %>
+    <label for="genres[]"><%= genre.name %><input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>">
+      <br>
+  <% end %>
+
+  <input type="submit" value="Create">
+</form>
