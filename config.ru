@@ -5,6 +5,9 @@ if ActiveRecord::Migrator.needs_migration?
   raise 'Run `rake db:migrate` to resolve the issue.'
 end
 
-
+use UsersController
+use MoviesController
+use GenresController
 use Rack::MethodOverride
+
 run ApplicationController
