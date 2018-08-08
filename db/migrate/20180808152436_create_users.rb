@@ -4,5 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :password_digest
       t.string :email
+      t.integer :movie_id
+      t.integer :genre_id
+    end
   end
 end
