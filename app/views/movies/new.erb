@@ -7,12 +7,18 @@
   <label for="Name"> Movie Name </label>
   <input type="text" name="Name"> </br>
 
+  <label for="Release_Year"> Release Year </label>
+  <input type="text" name="Release_Year"> </br>
+
   <label> Genres </label>
   <br>
   <% Genre.all.each do |genre| %>
     <label for="genres[]"><%= genre.name %><input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>">
       <br>
   <% end %>
+
+  <label for="genre"> Create New Genre </label>
+  <input type="text" name="genre"> </br>
 
   <input type="submit" value="Create">
 </form>
