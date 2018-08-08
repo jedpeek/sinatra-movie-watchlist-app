@@ -1,7 +1,7 @@
 <h1>Movies</h1>
 <h4><a href='/movies/new'>add movie</a></h4>
 <% @movies.each do |movie| %>
-  <h3>Artist: <%= movie.artist.name %> </h3>
+
   <h3>Movie Title: <a href="/movies/<%=movie.slug%>"> <%= movie.name %> </a></h3>
   <h3>Genre: <%= movie.genres.first.name %> </h3>
   <% end %>

@@ -21,7 +21,7 @@
             <a class="navbar-brand" href="/">Watchlist</a>
           </div>
             <div class="nav navbar-nav navbar-right"><!-- add login/logout functionality -->
-              <% if logged_in? %>
+              <% if !logged_in? %>
               <li><a href="/login">Login</a></li>
               <% else %>
               <li><a href="/logout">Logout</a></li>

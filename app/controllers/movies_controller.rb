@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
 
   post '/movies' do
     @movie = Movie.create(name: params["Name"])
-    @movie.artist = User.find_or_create_by(name: params["User Name"])
+    @movie.user = User.find_or_create_by(username: params["User Name"])
     @movie.genre_ids = params[:genres]
     @movie.save
 
@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
   patch '/movies/:slug' do
     @movie = Movie.find_by_slug(params[:slug])
     @movie.update(params[:song])
-    @movie.artist = User.find_or_create_by(name: params["User Name"])
+    @movie.user = User.find_or_create_by(username: params["User Name"])
     @movie.genre_ids = params[:genres]
     @movie.save
     redirect to "/movies/#{@movie.slug}"
