@@ -6,13 +6,13 @@
   <label for="name">Name</label>
   <input type="text" name="movie[name]" id="name" value="<%= @movie.name %>">
 
-  <label for="User Name"> User Name </label>
-  <input type="text" name="User Name" value="<%= @movie.user.name %>" > </br>
+  <label for="user_name"> User Name </label>
+  <input type="text" name="user_name" value="<%= @movie.user.name %>" > </br>
 
-  <% Genre.all.each do |genre| %>
-    <label><%= genre.name %></label>
-    <input type="checkbox" name="genres[]" value="<%= genre.id %>" id="<%= genre.name %>" <%='checked' if @movie.genres.include?(genre) %>>
-  <% end %>
+
+    <label>Genre</label>
+    <input type="text" name="genre_name">
+
 
   <input type="submit" value="Save">
 </form>

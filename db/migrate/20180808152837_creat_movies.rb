@@ -4,7 +4,7 @@ class CreatMovies < ActiveRecord::Migration
       t.string :name
       t.integer :release_year
       t.integer :user_id
-      t.integer :genre_id
+      t.integer :genre
     end
   end
 end

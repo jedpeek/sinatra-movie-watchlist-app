@@ -1,7 +1,3 @@
 <h1>Movie Title: <%= @movie.name %></h1>
-<h3>User:<a href="/artists/<%=@movie.artist.slug%>"> <%= @movie.user.name %> </a></h3>
-<h3>Genres: </h3>
-<% @movie.genres.each do |genre|%>
-<input type="checkbox" name="<%=genre.name%>" id="genre">
-<h5>Genre:<a href="/genres/<%=genre.slug%>"> <%= genre.name %> </a></h5>
-<%end%>
+<h3>User:<a href="/users/<%=@movie.user.slug%>"> <%= @movie.user.name %> </a></h3>
+<h5>Genre:<a href="/genres/<%=genre.slug%>"> <%= @movie.genre %> </a></h5>

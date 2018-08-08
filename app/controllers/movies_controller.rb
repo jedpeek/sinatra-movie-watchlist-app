@@ -3,7 +3,6 @@ class MoviesController < ApplicationController
   get '/movies' do
     if logged_in?
       @movies = Movie.all
-      binding.pry
       erb :'/movies/index'
     else
       redirect to '/login'
@@ -21,6 +20,7 @@ class MoviesController < ApplicationController
   get '/movies/:slug' do
     if logged_in?
       @movie = Movie.find_by_slug(params[:slug])
+      binding.pry
       erb :'/movies/show'
     else
       redirect to '/login'
@@ -28,9 +28,9 @@ class MoviesController < ApplicationController
   end
 
   post '/movies' do
-    @movie = Movie.create(name: params["Name"])
-    @movie.user = User.find_or_create_by(username: params["User Name"])
-    @movie.genre_ids = params[:genres]
+    @movie = Movie.create(name: params["Name"], release_year: params[:release_year].to_i)
+    @movie.user = current_user
+    @movie.genre << Genre.find_or_create_by(name: params[:genre])
     @movie.save
 
     redirect to "/movies/#{@movie.slug}"
