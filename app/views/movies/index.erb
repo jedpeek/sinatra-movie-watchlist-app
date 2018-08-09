@@ -4,5 +4,6 @@
 <% if @movies.size != 0 %>
   <% @movies.each do |movie| %>
     <h3>Movie Title: <a href="/movies/<%=movie.slug%>"> <%= movie.name %> </a></h3>
+    <p> added by: <%= movie.user %>
     <% end %>
   <% end %>
