@@ -20,7 +20,6 @@ class MoviesController < ApplicationController
   get '/movies/:slug' do
     if logged_in?
       @movie = Movie.find_by_slug(params[:slug])
-      binding.pry
       erb :'/movies/show'
     else
       redirect to '/login'
@@ -28,12 +27,14 @@ class MoviesController < ApplicationController
   end
 
   post '/movies' do
-    @movie = Movie.create(name: params["Name"], release_year: params[:release_year].to_i)
-    @movie.user = current_user
-    @movie.genre << Genre.find_or_create_by(name: params[:genre])
-    @movie.save
-
-    redirect to "/movies/#{@movie.slug}"
+    if params[:Name] != '' || params[:Name] != ''
+      @movie = Movie.create(name: params["Name"], release_year: params[:release_year].to_i)
+      @movie.user = current_user
+      @movie.genre << Genre.find_or_create_by(name: params[:genre])
+      @movie.save
+      redirect to "/movies/#{@movie.slug}"
+    else
+      redirect to '/movies/new'
   end
 
   get '/movies/:slug/edit' do

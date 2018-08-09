@@ -32,7 +32,7 @@
       </nav>
 
       <br>
-        <h1 align="center">Welcome to Watchlist <% if logged_in? %> <%= current_user.username.capitalize %> <%end%></h1>
+        <h1 align="center">Welcome to Watchlist <% if logged_in? %> <%= current_user.name.capitalize %> <%end%></h1>
       <br>
         <%= yield %>
     </div>
