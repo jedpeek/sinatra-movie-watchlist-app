@@ -1,8 +1,40 @@
-<h1>Movie Title: <%= @movie.name %></h1>
-<h3>Added By:<a href="/users/<%=current_user.slug%>"> <%= @movie.user.name %> </a></h3>
-<% if @movie.review != nil %>
-  <p>Review: <%=@movie.review %> </p>
-  <% else %>
-  <p>Please have <%= User.find_by_id(@movie.user_id).name %> write a <a href="/movies/<%=@movie.slug%>/edit">review </a></p>
-  <% end %>
-<h5>Genre:<a href="/genres"> <%= @movie.genre %> </a></h5>
+  <h1>Movie Title: <%= @movie.name %></h1>
+  <h3>Added By:<a href="/users/<%=@movie.user.slug%>"> <%= @movie.user.name %> </a></h3>
+  <% if @movie.review != nil %>
+    <p>Review: <%=@movie.review %> </p>
+    <% else %>
+    <p>Please have <%= User.find_by_id(@movie.user_id).name %> write a <a href="/movies/<%=@movie.slug%>/edit">review </a></p>
+    <% end %>
+  <h5>Genre:<a href="/genres"> <%= @movie.genre %> </a></h5>
+
+  <% if current_user == @movie.user %>
+
+  <a href="/movies/<%=@movie.slug%>/edit">
+    <input type="submit" value="Edit Movie" class='e_btn'>
+  </a>
+  <br>
+  <br>
+    <form method="post" action="/movies/<%=@movie.slug%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Movie" class='d_btn'>
+    </form>
+  <%end%>
+
+
+<style>
+.d_btn {
+  width: 100px;
+  color: red;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(249, 71, 71, 0.3);
+}
+
+.e_btn {
+  width: 100px;
+  color: green;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(81, 249, 165, 0.3);
+}
+</style>

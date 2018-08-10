@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
     if params[:Name] != '' || params[:release_year] != '' || params[:genre] != ''
       @movie = Movie.create(name: params["Name"], release_year: params[:release_year].to_i)
       @movie.user = current_user
-      @movie.genre = Genre.find_or_create_by(name: params[:genre])
+      @movie.genre = Genre.find_or_create_by(name: params[:genre]).name
       @movie.save
       redirect to "/movies/#{@movie.slug}"
     else
@@ -51,9 +51,23 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by_slug(params[:slug])
     @movie.update(params[:movie])
     @movie.user = current_user
-    @movie.genre = Genre.find_or_create_by(name: params[:genre_name])
+    @movie.genre = Genre.find_or_create_by(name: params[:genre_name]).name
+    binding.pry
     @movie.review = params[:review]
     @movie.save
     redirect to "/movies/#{@movie.slug}"
   end
+
+  post '/movies/:slug/delete' do
+  if logged_in?
+    @movie = Movie.find_by_slug(params[:slug])
+    if @movie.user == current_user
+      @movie.delete
+    end
+      redirect to '/movies' #keep
+  else
+    redirect to '/login'
+  end
+end
+
 end
