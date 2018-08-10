@@ -5,7 +5,8 @@
 <div class="row">
   <% @movies.each do |movie| %>
   <div class="col-sm-4 movie-poster">
-    <h3>Movie Title: <a href="/movies/<%=movie.slug%>"> <%= movie.name %> </a></h3>
+    <h3>Movie Title: <br>
+      <a href="/movies/<%=movie.slug%>"> <%= movie.name %> </a></h3>
     <p> added by:
     <% if movie.user.id == current_user.id%>
       You
@@ -28,5 +29,18 @@
 
   .movie-poster:hover {
     background-color: rgba(193, 219, 245, 1);
+    box-shadow: 10px 5px 5px grey;
+  }
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
 }
   </style>
