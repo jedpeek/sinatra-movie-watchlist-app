@@ -24,6 +24,7 @@ class UsersController < ApplicationController
       if !logged_in?
         erb :'/users/login'
       else
+        session[:user_id] = current_user.id
         redirect to '/movies'
       end
     end

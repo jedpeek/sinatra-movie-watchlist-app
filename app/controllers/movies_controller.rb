@@ -39,7 +39,7 @@ class MoviesController < ApplicationController
   end
 
   get '/movies/:slug/edit' do
-    if logged_in? && current_user.id == session[:id]
+    if logged_in? && current_user.id == session[:user_id]
       @movie = Movie.find_by_slug(params[:slug])
       erb :'movies/edit'
     else
@@ -47,11 +47,12 @@ class MoviesController < ApplicationController
     end
   end
 
-  patch '/movies/:slug' do
+  post '/movies/:slug' do
     @movie = Movie.find_by_slug(params[:slug])
-    @movie.update(params[:song])
+    @movie.update(params[:movie])
     @movie.user = current_user
-    @movie.genre_ids = params[:genres]
+    @movie.genre = Genre.find_or_create_by(name: params[:genre_name])
+    @movie.review = params[:review]
     @movie.save
     redirect to "/movies/#{@movie.slug}"
   end

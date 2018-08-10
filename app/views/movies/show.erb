@@ -1,3 +1,8 @@
 <h1>Movie Title: <%= @movie.name %></h1>
-<h3>User:<a href="/users/<%=current_user.slug%>"> <%= @movie.user.name %> </a></h3>
-<h5>Genre:<a href=""> <%= @movie.genre %> </a> @movie.genre </h5>
+<h3>Added By:<a href="/users/<%=current_user.slug%>"> <%= @movie.user.name %> </a></h3>
+<% if @movie.review != nil %>
+  <p>Review: <%=@movie.review %> </p>
+  <% else %>
+  <p>Please have <%= User.find_by_id(@movie.user_id).name %> write a <a href="/movies/<%=@movie.slug%>/edit">review </a></p>
+  <% end %>
+<h5>Genre:<a href="/genres"> <%= @movie.genre %> </a></h5>
