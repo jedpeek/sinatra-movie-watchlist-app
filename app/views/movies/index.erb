@@ -1,12 +1,12 @@
 <h1>Movies</h1>
-<h4><a href='/movies/new'>add movie</a></h4>
+<a href="/movies/new"><input type='submit' class="a_btn" value="Add Movie"></a>
 
 <% if @movies.size != 0 %>
 <div class="row">
   <% @movies.each do |movie| %>
   <div class="col-sm-4 movie-poster">
     <h3>Movie Title: <br>
-      <a href="/movies/<%=movie.slug%>"> <%= movie.name %> </a></h3>
+      <a href="/movies/<%=movie.slug%>"> <%= movie.name %></a></h3>
     <p> added by:
     <% if movie.user.id == current_user.id%>
       You
@@ -42,5 +42,15 @@
 .row > [class*='col-'] {
   display: flex;
   flex-direction: column;
+}
+
+.a_btn{
+  align: right;
+  display: inline;
+  width: 100px;
+  color: green;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(81, 249, 165, 0.3);
 }
   </style>

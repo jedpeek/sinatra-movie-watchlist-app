@@ -52,8 +52,9 @@ class MoviesController < ApplicationController
     @movie.update(params[:movie])
     @movie.user = current_user
     @movie.genre = Genre.find_or_create_by(name: params[:genre_name]).name
-    binding.pry
-    @movie.review = params[:review]
+    if params[:review] != ''
+      @movie.review = params[:review]
+    end
     @movie.save
     redirect to "/movies/#{@movie.slug}"
   end
