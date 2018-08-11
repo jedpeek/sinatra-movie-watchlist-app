@@ -39,11 +39,11 @@ class MoviesController < ApplicationController
   end
 
   get '/movies/:slug/edit' do
-    if logged_in? && current_user.id == session[:user_id]
+    if logged_in? && current_user == Movie.find_by_slug(params[:slug]).user
       @movie = Movie.find_by_slug(params[:slug])
       erb :'movies/edit'
     else
-      redirect to '/login'
+      redirect to '/failure'
     end
   end
 
@@ -70,5 +70,10 @@ class MoviesController < ApplicationController
     redirect to '/login'
   end
 end
+
+  get '/failure' do
+    erb :'/movies/failure'
+  end
+
 
 end

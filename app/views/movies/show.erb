@@ -3,7 +3,13 @@
   <% if @movie.review != nil %>
     <p>Review: <%=@movie.review %> </p>
     <% else %>
-    <p>Please have <%= User.find_by_id(@movie.user_id).name %> write a <a href="/movies/<%=@movie.slug%>/edit">review </a></p>
+    <p>Please have <%= User.find_by_id(@movie.user_id).name %> write a
+      <% if session[:user_id] == current_user.id %>
+        <a href="/movies/<%=@movie.slug%>/edit">review </a>
+      <% else %>
+        review
+      <%end %>
+    </p>
     <% end %>
   <h5>Genre:<a href="/genres"> <%= @movie.genre %> </a></h5>
 

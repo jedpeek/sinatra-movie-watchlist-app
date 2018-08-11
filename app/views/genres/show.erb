@@ -1,6 +1,0 @@
-<h1>Genre:<a href="/genres/<%=@genre.slug%>"> <%= @genre.name %> </a></h1>
-
-<h3>Movie Catalog:</h3>
- <% @genre.movies.each do |movie| %>
-    <a href="/movies/<%=movie.slug%>"><%= movie.name %></a>
-  <%end%>

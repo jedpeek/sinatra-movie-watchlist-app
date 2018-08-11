@@ -9,9 +9,9 @@
       <a href="/movies/<%=movie.slug%>"> <%= movie.name %></a></h3>
     <p> added by:
     <% if movie.user.id == current_user.id%>
-      You
+    <a href="/users/<%=movie.user.slug%>">You</a>
       <% else %>
-      <%= movie.user.name %>
+      <a href="/users/<%=movie.user.slug%>"><%= movie.user.name %></a>
       <%end%>
     </p>
     </div>
