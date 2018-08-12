@@ -1,3 +1,11 @@
+<% if flash[:message] == 'success' %>
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Success!</strong> You successfully added a movie.
+  </div>
+<% end %>
+
+
   <h1>Movie Title: <%= @movie.name %></h1>
   <h3>Added By:<a href="/users/<%=@movie.user.slug%>"> <%= @movie.user.name %> </a></h3>
   <% if @movie.review != nil %>
@@ -43,4 +51,25 @@
   padding: 5px;
   background-color: rgba(81, 249, 165, 0.3);
 }
+
+.alert {
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+}
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
 </style>

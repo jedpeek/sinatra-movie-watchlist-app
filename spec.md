@@ -19,7 +19,7 @@ Specs:
 
  [x] Include user input validations - a movie form will not submit unless all forms are filled out.
 
- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
+ [x] Display validation failures to user with error message (example form URL e.g. /posts/new) - added success banner when new movie is succesfully created. Added required fields to all fields when creating a movie so the form will not submit unless all fields are filled out.
 
  [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code-  yes
 

@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  use Rack::Flash
 
   get '/movies' do
     if logged_in?
@@ -32,8 +33,10 @@ class MoviesController < ApplicationController
       @movie.user = current_user
       @movie.genre = Genre.find_or_create_by(name: params[:genre]).name
       @movie.save
+      flash[:message] = "success"
       redirect to "/movies/#{@movie.slug}"
     else
+      flash[:message] = "fail"
       redirect to '/movies/new'
     end
   end
