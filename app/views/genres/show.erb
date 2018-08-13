@@ -1,0 +1,9 @@
+<ul>
+<% @genre.movie_ids.each do |movie_id|%>
+<% movie = Movie.find_by_id(movie_id) %>
+  <li>
+    <h3> <a href="/movies/<%=movie.slug%>"> <%= movie.name %> </a></h3>
+  </li>
+  <p> <%= movie.review %> </p>
+<% end %>
+</ul>

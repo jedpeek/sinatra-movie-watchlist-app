@@ -3,7 +3,7 @@
   <li>
     <h1> <a href="/movies/<%=movie.slug%>"> <%= movie.name %> </a></h1>
   </li>
-  <h3> Genre:<%= movie.genre %></a> </h3>
+  <h3> Genre: <%= movie.genre.name %></a> </h3>
   <p> <%= movie.review %> </p>
 <% end %>
 </ul>
