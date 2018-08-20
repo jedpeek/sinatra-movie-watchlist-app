@@ -58,6 +58,7 @@ class MoviesController < ApplicationController
     @movie.update(params[:movie])
     @movie.user = current_user
     @movie.genre = Genre.find_or_create_by(name: params[:genre_name])
+    @movie.release_year = params[:release_year]
     if params[:review] != ''
       @movie.review = params[:review]
     end
