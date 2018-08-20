@@ -15,9 +15,15 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+      if !User.find_by(name: params[:name])
+        @user = User.create(name: params[:name], email: params[:email], password: params[:password]).valid?
         session[:user_id] = @user.id
         redirect to '/movies'
+      else
+        flash[:message] = 'Username taken, try new name!'
+        redirect to '/signup'
+      end
+
     end
 
 

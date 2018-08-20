@@ -36,8 +36,52 @@
         <h1 align="center">Welcome to Watchlist <% if logged_in? %> <%= current_user.name.capitalize %> <%end%></h1>
       <br>
       <div class="container">
+        <% if !!flash[:message] %>
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <strong><%= flash[:message] %></strong>
+        </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>
   </body>
+  <style>
+  .d_btn {
+    width: 100px;
+    color: red;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(249, 71, 71, 0.3);
+  }
+
+  .e_btn {
+    width: 100px;
+    color: green;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(81, 249, 165, 0.3);
+  }
+
+  .alert {
+      padding: 20px;
+      background-color: #4CAF50;
+      color: white;
+  }
+  .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+
+  .closebtn:hover {
+      color: black;
+  }
+
+  </style>
 </html>

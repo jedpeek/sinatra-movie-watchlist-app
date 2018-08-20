@@ -36,10 +36,10 @@ class MoviesController < ApplicationController
       @movie.genre = Genre.find_or_create_by(name: params[:genre])
       @movie.release_year = params[:release_year]
       @movie.save
-      flash[:message] = "success"
+      flash[:message] = 'Succesfully added movie!'
       redirect to "/movies/#{@movie.slug}"
     else
-      flash[:message] = "fail"
+      flash[:message] = "Could not update movie!"
       redirect to '/movies/new'
     end
   end
@@ -63,6 +63,7 @@ class MoviesController < ApplicationController
       @movie.review = params[:review]
     end
     @movie.save
+    flash[:message] = 'Succesfully updated movie!'
     redirect to "/movies/#{@movie.slug}"
   end
 
@@ -72,6 +73,7 @@ class MoviesController < ApplicationController
     if @movie.user == current_user
       @movie.delete
     end
+      flash[:message] = 'Succesfully deleted movie!'
       redirect to '/movies' #keep
   else
     redirect to '/login'
