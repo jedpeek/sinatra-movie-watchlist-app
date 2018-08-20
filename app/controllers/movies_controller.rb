@@ -1,3 +1,5 @@
+require 'sinatra/base'
+require 'rack-flash'
 class MoviesController < ApplicationController
   use Rack::Flash
 
@@ -32,6 +34,7 @@ class MoviesController < ApplicationController
       @movie = Movie.create(name: params["Name"], release_year: params[:release_year].to_i)
       @movie.user = current_user
       @movie.genre = Genre.find_or_create_by(name: params[:genre])
+      @movie.release_year = params[:release_year]
       @movie.save
       flash[:message] = "success"
       redirect to "/movies/#{@movie.slug}"

@@ -20,6 +20,7 @@
     </p>
     <% end %>
   <h5>Genre:<a href="/genres/<%=@movie.genre.slug%>"> <%= @movie.genre.name %> </a></h5>
+  <h5>Released: <%= @movie.release_year %></h5>
 
   <% if current_user == @movie.user %>
 
