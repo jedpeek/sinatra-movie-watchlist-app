@@ -1,3 +1,11 @@
+
+<% if !!flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+<div class="container">
+  <a href="/login"><img src='https://i.axs.com/2015/05/promoted-media_5563c61b0df32.jpg'></a>
+</div>
+
 <style>
 img {
     display: block;
@@ -7,9 +15,3 @@ img {
     border-radius: 20px;
 }
 </style>
-<% if !!flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-<div class="container">
-  <a href="/login"><img src='https://i.axs.com/2015/05/promoted-media_5563c61b0df32.jpg'></a>
-</div>

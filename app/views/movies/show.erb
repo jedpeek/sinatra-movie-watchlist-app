@@ -1,3 +1,4 @@
+<link rel=”stylesheet” type=”text/css” href=”/style.css” />
 <% if flash[:message] == 'success' %>
   <div class="alert">
     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -29,7 +30,7 @@
   </a>
   <br>
   <br>
-    <form method="post" action="/movies/<%=@movie.slug%>/delete">
+    <form method="post" action="/movies/<%=@movie.slug%>/delete" onsubmit= "return confirm('Are you sure you want to delete <%=@movie.name %>?')">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete Movie" class='d_btn'>
     </form>
